@@ -45,4 +45,6 @@
     color: black;
     text-align: right;
     padding: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
