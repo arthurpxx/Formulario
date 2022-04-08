@@ -14,7 +14,7 @@
   <div class="container">
     <div class="first-step">
       <p>Clique no botão para calcular o IMC</p>
-      <button class="btn">Iniciar</button>
+      <button class="btn" onclick="go(1,2)">Iniciar</button>
     </div>
 
     <div class="second-step">
@@ -22,25 +22,67 @@
       <hr>
       <label for="peso"> Digite seu peso:</label>
       <input type="number" placeholder="Seu peso" name="peso" id="peso">
-
+      <br>
       <label for="altura"> Digite sua altura:</label>
       <input type="number" placeholder="Sua altura" name="altura" id="altura">
       <br><br>
-      <button class="btn">Calcular</button>
+      <button class="btn" onclick="validate()">Calcular</button>
     </div>
 
     <div class="final-step">
       <h3>Resultado!</h3>
       <p id="resultado">...</p>
-      <button class="btn">Calcular Novamente</button> 
-      <button class="btn">finalizar</button> 
-  </div>
+      <button class="btn">Calcular Novamente</button>
+      <button class="btn">finalizar</button>
+    </div>
 
-  <script>
-    const firstDiv = document.querySelector('.first-step');
-    const secondDiv = document.querySelector('.second-step');
-    const finalDiv = document.querySelector('.final-step');
-  </script>
+    <script>
+      const firstDiv = document.querySelector('.first-step');
+      const secondDiv = document.querySelector('.second-step');
+      const finalDiv = document.querySelector('.final-step');
+
+      function go(currentStep, nextStep) {
+        let dNone, dBlock;
+        if (currentStep == 1) {
+          dNone = firstDiv;
+        } else if (currentStep == 2) {
+          dNone = secondDiv;
+        } else {
+          dNone = finalDiv;
+        }
+        dNone.style.display = 'none'
+        if (nextStep == 1) {
+          dBlock = firstDiv;
+        } else if (nextStep == 2) {
+          dBlock = secondDiv;
+        } else {
+          dBlock = finalDiv;
+        }
+        dBlock.style.display = 'block'
+      }
+
+      function validate() {
+        const peso          = document.getElementById('peso');
+        const altura        = document.getElementById('altura');
+        peso.style.border   = 'none'
+        altura.style.border = 'none'
+        if (!peso.value || !altura.value) {
+          if (!peso.value && !altura.value) {
+            peso.style.border = '1px solid red'
+            altura.style.border = '1px solid red'
+          }
+          else if (!peso.value) {
+            peso.style.border = '1px solid red'
+          }
+          else {
+            altura.style.border = '1px solid red'
+          }
+        }
+        else {
+          console.log('tudo ok!')
+        }
+      }
+    </script>
 </body>
 
 </html>

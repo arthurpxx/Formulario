@@ -30,7 +30,7 @@ body{
     background-color: dodgerblue;
 }
 
-.first-step,
+.final-step,
 .second-step {
     display: none;
 }
@@ -40,4 +40,6 @@ input{
     border: none;
     border-radius: 5px;
     outline: none;
+    display: flex;
+    flex-direction: column;
 }
